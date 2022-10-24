@@ -20,19 +20,28 @@ function Producto(nombre, precio, stock){
     }
 }
 
+
 let productoA = new Producto("Mug", 5.50, 150)
 let productoB = new Producto("Figura", 12.00, 100)
 let productoC = new Producto("Llavero", 8.50 , 200)
+let productoD = new Producto("Manilla", 2.50 , 130)
+let productoE = new Producto("Camiseta", 15.50 , 50)
+let productoF = new Producto("Gorra", 9.00 , 20)
+
+
+let listaProductos =[productoA, productoB, productoC, productoD, productoE, productoF] 
+
+let listaNombres = []
+
+for(const prod of listaProductos){
+    if (prod.stock > 0) {
+    listaNombres.push(prod.nombre)
+    }
+}
 
 let precioTotal = 0
 
-const listaProducto =[] 
-listaProducto.push(new Producto(`Camiseta`,165035,15,1.21,1));
-listaProducto.push(new Producto(`Gorra`,6198.1,30,1.21,2));
-listaProducto.push(new Producto(`Parche`,6500,50,1.21,3));
-listaProducto.push(new Producto(`Manilla`,45000,53,1.21,4));
-
-alert("Artículos de nuestro catálogo: \n - Mug\n - Figura\n - Llavero\n - Camiseta\n - Gorra\n - Parche\n - Manilla")
+alert("Artículos de nuestro catálogo: \n - " + listaNombres.join("\n -"))
 
 function calculoPrecio(cantidad, precio){
     precioTotal += (cantidad * precio)
@@ -52,47 +61,42 @@ let cantidadCompra = parseInt(prompt("Cuantas referencias de producto desea adqu
 
 for(let i = 0; i < cantidadCompra; i = i + 1){
 
-    let productoCompra = prompt("Ingrese el nombre del producto que desea comprar: \n - Mug\n - Figura\n - Llavero\n - Camiseta\n - Gorra\n - Parche\n - Manilla")
+    let productoCompra = prompt("Ingrese el nombre del producto que desea comprar: \n - " + listaNombres.join("\n -"))
     
     if(productoCompra.toUpperCase() == 'MUG'){
         let cantidadProductoMug = prompt("ingrese que cantidad de " + productoA.nombre + " desea comprar:")
-        calculoStock(cantidadProductoMug, productoA.stock, productoA["precio"])
+        calculoStock(cantidadProductoMug, productoA["stock"], productoA["precio"])
         productoA.restarStock(cantidadProductoMug)
     }
     else if(productoCompra == 'Figura'){
         let cantidadProductoFigura = prompt("ingrese que cantidad de " + productoB.nombre + " desea comprar:")
-        calculoStock(cantidadProductoFigura, productoB.stock, precioProductoB)
+        calculoStock(cantidadProductoFigura, productoB["stock"], productoB["precio"])
         productoB.restarStock(cantidadProductoFigura)
     }
     else if(productoCompra == 'Llavero'){
         let cantidadProductoLlavero = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        calculoStock(cantidadProductoLlavero, stockProductoC, precioProductoC)
+        calculoStock(cantidadProductoLlavero, productoC["stock"], productoC["precio"])
         productoC.restarStock(cantidadProductoLlavero)
     }
 
     else if(productoCompra == 'Camiseta'){
-        let cantidadProductoLlavero = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        calculoStock(cantidadProductoLlavero, stockProductoC, precioProductoC)
-        productoC.restarStock(cantidadProductoLlavero)
+        let cantidadProductoCamiseta = prompt("ingrese que cantidad de " + productoE.nombre + " desea comprar:")
+        calculoStock(cantidadProductoCamiseta, stockProductoE, precioProductoE)
+        productoE.restarStock(cantidadProductoCamiseta)
     }
 
     else if(productoCompra == 'Gorra'){
-        let cantidadProductoLlavero = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        calculoStock(cantidadProductoLlavero, stockProductoC, precioProductoC)
-        productoC.restarStock(cantidadProductoLlavero)
+        let cantidadProductoGorra = prompt("ingrese que cantidad de " + productoF.nombre + " desea comprar:")
+        calculoStock(cantidadProductoGorra, stockProductoF, precioProductoF)
+        productoF.restarStock(cantidadProductoGorra)
     }
 
     else if(productoCompra == 'Manilla'){
-        let cantidadProductoLlavero = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        calculoStock(cantidadProductoLlavero, stockProductoC, precioProductoC)
-        productoC.restarStock(cantidadProductoLlavero)
+        let cantidadProductoManilla = prompt("ingrese que cantidad de " + productoD.nombre + " desea comprar:")
+        calculoStock(cantidadProductoManilla, stockProductoD, precioProductoD)
+        productoD.restarStock(cantidadProductoManilla)
     }
 
-    else if(productoCompra == 'Parche'){
-        let cantidadProductoLlavero = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        calculoStock(cantidadProductoLlavero, stockProductoC, precioProductoC)
-        productoC.restarStock(cantidadProductoLlavero)
-    }
 
     else{
         alert("El producto seleccionado no se encuentra disponible")
