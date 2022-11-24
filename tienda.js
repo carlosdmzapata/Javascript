@@ -31,13 +31,15 @@ let productoF = new Producto("Gorra", 9.00 , 20)
 
 let listaProductos =[productoA, productoB, productoC, productoD, productoE, productoF] 
 
-let listaNombres = []
+let listaProductosConStock = listaProductos.filter((prod) => prod.nombre)
 
-for(const prod of listaProductos){
+let listaNombres = listaProductosConStock.map((prod) => prod.nombre)
+
+/*for(const prod of listaProductos){
     if (prod.stock > 0) {
     listaNombres.push(prod.nombre)
     }
-}
+}*/
 
 let precioTotal = 0
 
